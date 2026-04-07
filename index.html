@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Marron Pâtisserie artisanale à Tunis — gâteaux, macarons, viennoiseries et créations sur-mesure. Commandez via WhatsApp ou Instagram DM." />
+  <meta name="theme-color" content="#6B3A2A" />
+  <title>Marron — Pâtisserie Artisanale · Tunis</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Marron — Pâtisserie Artisanale · Tunis" />
+  <meta property="og:description" content="Des créations gourmandes façonnées avec passion, livrées avec amour." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=1200&h=630&fit=crop" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+
+  <!-- Three.js (sync — needed by main.js hero canvas) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+
+  <!-- ═══ Loading screen ══════════════════════════════════════ -->
+  <div id="loading-screen" aria-hidden="true" role="status" aria-label="Chargement en cours">
+    <div class="loading-logo">Marron</div>
+    <div class="loading-bar"><div class="loading-fill"></div></div>
+  </div>
+
+  <!-- ═══ Custom cursor ═══════════════════════════════════════ -->
+  <div id="custom-cursor" aria-hidden="true"></div>
+
+  <!-- ═══ Scroll progress ══════════════════════════════════════ -->
+  <div class="progress-bar" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       NAVBAR
+       ═══════════════════════════════════════════════════════════ -->
+  <nav id="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="container nav-inner">
+      <!-- Logo -->
+      <a href="#" class="nav-logo" aria-label="Marron Pâtisserie — Accueil">Marron</a>
+
+      <!-- Desktop links -->
+      <ul class="nav-links" role="list">
+        <li><a href="#catalogue">Catalogue</a></li>
+        <li><a href="#about">Notre Histoire</a></li>
+        <li><a href="#order">Commander</a></li>
+      </ul>
+
+      <!-- Hamburger -->
+      <button id="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobile-nav" aria-label="Menu mobile" role="dialog">
+      <a href="#catalogue">Catalogue</a>
+      <a href="#about">Notre Histoire</a>
+      <a href="#order">Commander</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ═══════════════════════════════════════════════════════
+         1. HERO
+         ═══════════════════════════════════════════════════════ -->
+    <section id="hero" aria-label="Accueil">
+
+      <!-- Three.js particle canvas -->
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+      <!-- Hero content -->
+      <div class="hero-content">
+        <span class="hero-eyebrow">Pâtisserie Artisanale · Tunis</span>
+        <h1 class="hero-title"><em>Marron</em></h1>
+        <p class="hero-subtitle">Des créations gourmandes façonnées avec passion, livrées avec amour.</p>
+        <div class="hero-cta">
+          <a href="#catalogue" class="btn btn-primary">Découvrir le catalogue</a>
+          <a href="#order" class="btn btn-ghost">Commander</a>
+        </div>
+        <div class="hero-badge">
+          <span>Commandes via WhatsApp &amp; Instagram DM</span>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator" aria-hidden="true">
+        <span>Défiler</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         2. À PROPOS
+         ═══════════════════════════════════════════════════════ -->
+    <section id="about" aria-label="Notre Histoire">
+      <div class="container">
+        <div class="about-grid">
+
+          <!-- Image -->
+          <div class="about-image-wrapper reveal">
+            <img
+              src="https://images.unsplash.com/photo-1556909211-36987daf7b4d?w=600&h=700&fit=crop"
+              alt="Cuisine artisanale Marron — préparation de pâtisseries à Tunis"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/600x700/E8C9B0/6B3A2A?text=Marron'"
+            />
+            <div class="about-image-accent" aria-hidden="true"></div>
+          </div>
+
+          <!-- Text -->
+          <div class="about-text">
+            <span class="section-label reveal">Notre Histoire</span>
+            <h2 class="section-title reveal">Chaque gâteau raconte une histoire.</h2>
+            <div class="divider reveal" aria-hidden="true"></div>
+            <p class="section-body reveal">
+              Chez Marron, chaque gâteau raconte une histoire.
+              Nous créons des pâtisseries artisanales avec des ingrédients soigneusement sélectionnés,
+              pour que chaque bouchée soit un moment de pur bonheur.
+            </p>
+            <p class="section-body reveal">
+              Basée à Tunis, Marron livre ses créations avec amour depuis ses débuts —
+              du croissant feuilleté du matin à l'entremet d'exception pour vos grandes occasions.
+            </p>
+
+            <!-- Values -->
+            <div class="values-grid" aria-label="Nos valeurs">
+              <div class="value-item reveal">
+                <i data-lucide="heart" aria-hidden="true"></i>
+                <span>Artisanal</span>
+              </div>
+              <div class="value-item reveal">
+                <i data-lucide="leaf" aria-hidden="true"></i>
+                <span>Ingrédients Naturels</span>
+              </div>
+              <div class="value-item reveal">
+                <i data-lucide="gift" aria-hidden="true"></i>
+                <span>Sur Commande</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         3. CATALOGUE
+         ═══════════════════════════════════════════════════════ -->
+    <section id="catalogue" aria-label="Notre catalogue">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="section-label reveal">Le Catalogue</span>
+          <h2 class="reveal">Notre Catalogue</h2>
+          <div class="divider reveal" aria-hidden="true"></div>
+          <p class="section-body reveal">
+            Découvrez l'ensemble de nos pâtisseries artisanales. Filtrez par catégorie et
+            commandez directement via WhatsApp.
+          </p>
+        </div>
+
+        <!-- Filter pills -->
+        <div class="filter-pills" role="tablist" aria-label="Filtrer par catégorie">
+          <button class="filter-btn active" data-category="all" role="tab" aria-selected="true" aria-controls="products-grid">Tout</button>
+          <button class="filter-btn" data-category="gateaux" role="tab" aria-selected="false" aria-controls="products-grid">Gâteaux</button>
+          <button class="filter-btn" data-category="petits-gateaux" role="tab" aria-selected="false" aria-controls="products-grid">Petits Gâteaux</button>
+          <button class="filter-btn" data-category="viennoiseries" role="tab" aria-selected="false" aria-controls="products-grid">Viennoiseries</button>
+          <button class="filter-btn" data-category="brownies" role="tab" aria-selected="false" aria-controls="products-grid">Brownies &amp; Cookies</button>
+          <button class="filter-btn" data-category="speciales" role="tab" aria-selected="false" aria-controls="products-grid">Commandes Spéciales</button>
+        </div>
+
+        <!-- Products grid — populated by catalog.js -->
+        <div id="products-grid" class="products-grid" role="list" aria-live="polite" aria-label="Produits de la pâtisserie Marron">
+          <!-- Product cards injected by catalog.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         4. BEST-SELLERS
+         ═══════════════════════════════════════════════════════ -->
+    <section id="bestsellers" aria-label="Nos best-sellers">
+      <div class="container">
+
+        <div class="bestsellers-header">
+          <div>
+            <span class="section-label">Les Incontournables</span>
+            <h2>Nos Best-sellers</h2>
+            <div class="divider" aria-hidden="true"></div>
+            <p class="section-body">Ceux que nos clients commandent encore et encore.</p>
+          </div>
+          <div class="slider-controls" role="group" aria-label="Contrôles du carrousel">
+            <button class="slider-prev" aria-label="Précédent">
+              <i data-lucide="arrow-left" aria-hidden="true"></i>
+            </button>
+            <button class="slider-next" aria-label="Suivant">
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Slider -->
+        <div class="bestsellers-slider" role="region" aria-label="Carrousel des best-sellers">
+          <div id="featured-track" class="featured-track">
+            <!-- Featured cards injected by catalog.js -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         5. COMMANDER
+         ═══════════════════════════════════════════════════════ -->
+    <section id="order" aria-label="Comment commander">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="section-label reveal">Commander</span>
+          <h2 class="reveal">C'est simple &amp; rapide</h2>
+          <div class="divider reveal" style="margin-inline: auto;" aria-hidden="true"></div>
+          <p class="section-body reveal">
+            Envie d'une douceur ? Passez votre commande facilement via WhatsApp ou Instagram DM.
+            Livraison disponible à Tunis · Récupération sur place aussi.
+          </p>
+        </div>
+
+        <!-- 3 steps -->
+        <div class="steps-grid">
+          <div class="step-item reveal">
+            <div class="step-number">01</div>
+            <i data-lucide="search" class="step-icon" aria-hidden="true"></i>
+            <h3>Choisissez</h3>
+            <p>Parcourez notre catalogue et sélectionnez vos créations préférées.</p>
+          </div>
+          <div class="step-item reveal">
+            <div class="step-number">02</div>
+            <i data-lucide="message-circle" class="step-icon" aria-hidden="true"></i>
+            <h3>Commandez</h3>
+            <p>Envoyez votre commande via WhatsApp ou Instagram DM en quelques secondes.</p>
+          </div>
+          <div class="step-item reveal">
+            <div class="step-number">03</div>
+            <i data-lucide="package" class="step-icon" aria-hidden="true"></i>
+            <h3>Savourez</h3>
+            <p>Récupérez ou faites livrer votre commande à Tunis. La gourmandise vous attend.</p>
+          </div>
+        </div>
+
+        <!-- CTA buttons -->
+        <div class="order-cta reveal">
+          <a
+            href="https://wa.me/21600000000"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-whatsapp"
+            aria-label="Commander sur WhatsApp"
+          >
+            <i data-lucide="message-circle" aria-hidden="true"></i>
+            Commander sur WhatsApp
+          </a>
+          <a
+            href="https://instagram.com/marron.officialll"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-instagram"
+            aria-label="Envoyer un DM sur Instagram"
+          >
+            <i data-lucide="instagram" aria-hidden="true"></i>
+            Instagram DM
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         6. GALERIE
+         ═══════════════════════════════════════════════════════ -->
+    <section id="gallery" aria-label="Galerie Instagram">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="section-label reveal">Galerie</span>
+          <h2 class="reveal">Notre univers sur Instagram</h2>
+          <div class="divider reveal" style="margin-inline: auto;" aria-hidden="true"></div>
+          <p class="section-body reveal">
+            Coulisses de la création, nouveautés du jour et moments gourmands —
+            suivez l'aventure Marron sur Instagram.
+          </p>
+        </div>
+
+        <!-- Bento grid -->
+        <div class="gallery-bento reveal" role="list" aria-label="Photos Instagram de Marron">
+          <div class="gallery-item gallery-item--1" role="listitem">
+            <img
+              src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=400&fit=crop"
+              alt="Détail de macaron — pâtisserie Marron Tunis"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/400x400/6B3A2A/FDF6EE?text=Macarons'"
+            />
+          </div>
+          <div class="gallery-item gallery-item--2" role="listitem">
+            <img
+              src="https://images.unsplash.com/photo-1558024920-b41e1887dc32?w=400&h=600&fit=crop"
+              alt="Gâteau au chocolat coulant — pâtisserie Marron"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/400x600/C8834A/FDF6EE?text=Chocolat'"
+            />
+          </div>
+          <div class="gallery-item gallery-item--3" role="listitem">
+            <img
+              src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&h=400&fit=crop"
+              alt="Mains artisanes préparant une pâtisserie — Marron Tunis"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/600x400/E8C9B0/6B3A2A?text=Artisanal'"
+            />
+          </div>
+          <div class="gallery-item gallery-item--4" role="listitem">
+            <img
+              src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=400&h=400&fit=crop"
+              alt="Tranche de gâteau — création Marron Pâtisserie"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/400x400/D4A94A/6B3A2A?text=Gâteau'"
+            />
+          </div>
+          <div class="gallery-item gallery-item--5" role="listitem">
+            <img
+              src="https://images.unsplash.com/photo-1506459225024-1428097a7e18?w=400&h=600&fit=crop"
+              alt="Caramel coulant — pâtisserie Marron"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/400x600/C8834A/FDF6EE?text=Caramel'"
+            />
+          </div>
+          <div class="gallery-item gallery-item--6" role="listitem">
+            <img
+              src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&h=400&fit=crop"
+              alt="Flat lay pâtisseries Marron — assortiment gourmand"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/600x400/6B3A2A/FDF6EE?text=Marron'"
+            />
+          </div>
+        </div>
+
+        <div class="gallery-cta reveal">
+          <a
+            href="https://instagram.com/marron.officialll"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline"
+            aria-label="Suivre Marron sur Instagram @marron.officialll"
+          >
+            Suivre @marron.officialll
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════ -->
+  <footer id="footer" role="contentinfo" aria-label="Pied de page">
+    <div class="container">
+      <div class="footer-main">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <p class="footer-logo">Marron</p>
+          <p class="footer-tagline">
+            Pâtisserie artisanale à Tunis.<br />
+            Des créations gourmandes façonnées<br />
+            avec passion, livrées avec amour.
+          </p>
+          <div class="footer-socials" aria-label="Réseaux sociaux">
+            <a
+              href="https://instagram.com/marron.officialll"
+              class="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram Marron @marron.officialll"
+            >
+              <i data-lucide="instagram" aria-hidden="true"></i>
+            </a>
+            <a
+              href="https://wa.me/21600000000"
+              class="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contacter Marron sur WhatsApp"
+            >
+              <i data-lucide="message-circle" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick links -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <nav class="footer-links" aria-label="Liens rapides">
+            <a href="#catalogue">Catalogue</a>
+            <a href="#about">Notre Histoire</a>
+            <a href="#gallery">Galerie</a>
+            <a href="#order">Commander</a>
+          </nav>
+        </div>
+
+        <!-- Categories -->
+        <div class="footer-col">
+          <h4>Catégories</h4>
+          <nav class="footer-links" aria-label="Catégories de produits">
+            <a href="#catalogue">Gâteaux &amp; Entremets</a>
+            <a href="#catalogue">Petits Gâteaux</a>
+            <a href="#catalogue">Viennoiseries</a>
+            <a href="#catalogue">Brownies &amp; Cookies</a>
+            <a href="#catalogue">Commandes Spéciales</a>
+          </nav>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <nav class="footer-links" aria-label="Informations de contact">
+            <a href="https://wa.me/21600000000" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href="https://instagram.com/marron.officialll" target="_blank" rel="noopener noreferrer">@marron.officialll</a>
+            <a href="#order">Passer commande</a>
+          </nav>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <p>© 2025 Marron Pâtisserie · Tunis, Tunisie</p>
+        <p>Fait avec amour à Tunis</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ Scripts ══════════════════════════════════════════════
+       Load order: product data → catalogue logic → main animations
+       ═══════════════════════════════════════════════════════════ -->
+  <script src="data/products.js"></script>
+  <script src="scripts/catalog.js"></script>
+  <script src="scripts/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/Aloulou/.claude/plugins/marketplaces/ui-ux-pro-max-skill/.claude/skills/ui-ux-pro-max/**)",
+      "Bash(python3 scripts/search.py \"luxury artisan patisserie bakery elegant premium warm\" --design-system -p \"Marron Patisserie\" -f markdown)",
+      "Bash(py --version)",
+      "Bash(where python:*)"
+    ]
+  }
+}
