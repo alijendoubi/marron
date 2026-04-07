@@ -100,12 +100,12 @@ function initThreeJS() {
       return new THREE.Points(geometry, material);
     }
 
-    /* ── Caramel particles (300) ── */
-    const particles = createParticles(300, 4, 3, 2, 0xC8834A, 0.025, 0.6);
+    /* ── Caramel particles (300) — warm on dark hero ── */
+    const particles = createParticles(300, 4, 3, 2, 0xA0522D, 0.025, 0.55);
     scene.add(particles);
 
-    /* ── Gold particles (150) ── */
-    const goldParticles = createParticles(150, 4, 3, 2, 0xD4A94A, 0.015, 0.4);
+    /* ── Cream particles (150) — subtle glow ── */
+    const goldParticles = createParticles(150, 4, 3, 2, 0xF5EDE0, 0.012, 0.25);
     scene.add(goldParticles);
 
     /* ── Mouse parallax tracking ── */
@@ -544,7 +544,23 @@ function initScrollReveal() {
 }
 
 /* ════════════════════════════════════════════════════════════════
-   11. INIT ORDER
+   11. CATEGORY CARD WHATSAPP HANDLER
+   ════════════════════════════════════════════════════════════════ */
+function initCategoryCards() {
+  const WA_SIDI_DAOUD = '21656425425';
+  document.querySelectorAll('.btn-category').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.dataset.category || 'vos pâtisseries';
+      const message  = encodeURIComponent(
+        'Bonjour Marron. 🍫\nJe suis intéressé(e) par votre catégorie : *' + category + '*\nPouvez-vous me donner plus d\'informations et la disponibilité ? Merci !'
+      );
+      window.open('https://wa.me/' + WA_SIDI_DAOUD + '?text=' + message, '_blank', 'noopener,noreferrer');
+    });
+  });
+}
+
+/* ════════════════════════════════════════════════════════════════
+   12. INIT ORDER
    ════════════════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
   /* Three.js canvas needs size ASAP, init immediately */
@@ -560,5 +576,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initSlider();
     initTiltEffect();
     initScrollReveal();
+    initCategoryCards();
   });
 });
