@@ -4,7 +4,15 @@
       "Read(//c/Users/Aloulou/.claude/plugins/marketplaces/ui-ux-pro-max-skill/.claude/skills/ui-ux-pro-max/**)",
       "Bash(python3 scripts/search.py \"luxury artisan patisserie bakery elegant premium warm\" --design-system -p \"Marron Patisserie\" -f markdown)",
       "Bash(py --version)",
-      "Bash(where python:*)"
+      "Bash(where python:*)",
+      "Bash(git init:*)",
+      "Bash(git remote:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git rebase:*)",
+      "Bash(git stash:*)",
+      "Bash(git commit -m ':*)"
     ]
   }
 }
